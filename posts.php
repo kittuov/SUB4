@@ -39,7 +39,7 @@ while ($post_query_row=mysql_fetch_assoc($post_query_run))
             </header>
             <article class="post_article">'.$post.'</article>
             <footer class="post_footer">'.$completedate.'</footer> 
-            <article id="comments_body">'.getcomments($post_query_row["id"]).'</article>
+            '.getcomments($post_query_row["id"]).'
             <form action="index.php" method="post" id="commentform">
                 <input type="text" name="post_id" value="'.$post_query_row['id'].'" hidden/>
                 <input type="text" name="comment" id="commentform"/>
@@ -57,11 +57,11 @@ function getcomments($id)
         while ($query_row=mysql_fetch_assoc($query_run))
         {
             $username=getusername($query_row["user_id"]);
-            $value.='<section id="comment">
+            $value.='<article id="comments_body"> <section id="comment">
                 <header><h3>'.$username.'</h3></header>
                 <article>'.$query_row["comment"].'</article>
                 <footer>'.$query_row["time_stamp"].'</footer>
-            </section>';
+            </section></article>';
         }
         return $value;
     }else return "queryfail";

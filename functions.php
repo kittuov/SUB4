@@ -1,10 +1,11 @@
 <?php 
+include "mysqlconnect.php";
 function mainmatter()
 {
     global $userinfo,$id,$signin;
     if (isloggedin())
        include 'posts.php';
-    else {include 'loginform.php';}
+    else {include 'loginform.php'; echo @$_SESSION['imp_msg'];$_SESSION['imp_msg']=null;}
 }
 function check($username,$password)
 {
@@ -67,5 +68,20 @@ function comment ($comment, $postid)
     $query="INSERT INTO `comments`(`id`, `comment`, `user_id`, `post_id`, `time_stamp`) VALUES (null,'$comment','$id','$postid', $timenow)";
     mysql_query($query);
     header("Location: index.php");
+}
+function createuser($username, $password, $password_check,$email)
+{
+    $check="SELECT `id` FROM `logininfo` WHERE `username` = '".$username."'";
+    if ($bullshit = mysql_query($check));
+    {        
+        $numrows=mysql_num_rows($bullshit);
+        if ($numrows != 0) $_SESSION['imp_msg']=" User name already Exists";
+        else
+        if ($password===$password_check)       
+        {
+            $query="INSERT INTO `logininfo`(`id`, `username`, `password`, `Email`) VALUES (null,'".$username."','".$password."','".$email."')";
+            if (!mysql_query($query)) $_SESSION['imp_msg']=" couldn't enter";
+        }else $_SESSION['imp_msg']=" Two fields didnot match";
+    }
 }
 ?>

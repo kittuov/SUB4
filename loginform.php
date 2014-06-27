@@ -6,3 +6,13 @@
     <input type="submit" value="login"/>
 </form>
 </section>
+<section>
+    <form action="index.php" method="post">
+        SIGNUP <br>
+        username : <input type="text" name="create_user" /><br>
+        email: <input type="text" name="create_email"/> <br>
+        password : <input type="password" name="create_pass"/><br>
+        Re-enter Password : <input type="password" name="create_pass_check"/>
+        <input type="submit" value="signup"/>
+    </form>
+</section>
