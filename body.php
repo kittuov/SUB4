@@ -19,6 +19,9 @@
             <?php 
                 mainmatter();
             ?>
+            <iframe src="getcontent.php" width="100%" height="auto" id="posts_frame">
+            ;alkdsfl;kasdf
+            </iframe>
         </article>
         <footer id="main_foter">
             

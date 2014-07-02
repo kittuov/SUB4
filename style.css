@@ -1,3 +1,10 @@
+#posts_frame
+{
+    display:flex;
+    position:relative;
+    flex:1;
+}
+
 #comments_body
 {
     background:rgba(0,0,0,0.2);
@@ -140,6 +147,7 @@ body
     background:white;
     box-shadow:1px 1px 20px black;
     padding:20px;
+    min-height:100%;
 }
 #main_header
 {
@@ -187,7 +195,7 @@ body
     padding-left:10px;
     padding-right:10px;
 }
-#content
-{
-    
+#content{
+
+    height:100%;
 }
